@@ -116,7 +116,7 @@ enum Transfers {
         let ident: String?
         if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
             if let error = json["error"] as? [String: Any] {
-                throw AppError("Webshare odmítl nahrávání: \(error["message"] as? String ?? "kód \(error["code"] ?? "?")")")
+                throw AppError(LF("Webshare odmítl nahrávání: %@", error["message"] as? String ?? String(describing: error["code"] ?? "?")))
             }
             ident = json["ident"] as? String
         } else { ident = try XMLResponse.parse(data)["ident"] }

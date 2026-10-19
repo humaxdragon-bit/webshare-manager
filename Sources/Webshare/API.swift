@@ -7,7 +7,7 @@ import Security
 
 struct AppError: LocalizedError {
     let message: String
-    init(_ message: String) { self.message = message }
+    init(_ message: String) { self.message = L(message) }
     var errorDescription: String? { message }
 }
 
@@ -27,7 +27,7 @@ final class XMLResponse: NSObject, XMLParserDelegate {
         guard parser.parse() else { throw AppError("Server vrátil neplatnou XML odpověď.") }
         let result = delegate.values
         guard result["status"] == "OK" else {
-            throw AppError([result["message"] ?? "Požadavek se nezdařil.", result["code"] ?? ""].filter { !$0.isEmpty }.joined(separator: " · "))
+            throw AppError([result["message"] ?? L("Požadavek se nezdařil."), result["code"] ?? ""].filter { !$0.isEmpty }.joined(separator: " · "))
         }
         return delegate
     }
@@ -144,7 +144,7 @@ struct API {
         return try XMLResponse.document(data)
     }
     static func check(_ response: URLResponse) throws {
-        guard let r = response as? HTTPURLResponse, (200..<300).contains(r.statusCode) else { throw AppError("Server odmítl přenos (HTTP \((response as? HTTPURLResponse)?.statusCode ?? 0)).") }
+        guard let r = response as? HTTPURLResponse, (200..<300).contains(r.statusCode) else { throw AppError(LF("Server odmítl přenos (HTTP %lld).", (response as? HTTPURLResponse)?.statusCode ?? 0)) }
     }
     static func secureURL(_ value: String, webshareOnly: Bool = false) throws -> URL {
         guard let url = URL(string: value), url.scheme == "https", let host = url.host, url.user == nil, url.password == nil,

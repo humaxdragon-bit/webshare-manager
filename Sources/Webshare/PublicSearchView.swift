@@ -43,18 +43,18 @@ struct PublicSearchView: View {
             Divider()
             if let error = search.error {
                 HStack {
-                    Label(error, systemImage: "exclamationmark.triangle").font(.callout).textSelection(.enabled)
+                    Label(L(error), systemImage: "exclamationmark.triangle").font(.callout).textSelection(.enabled)
                     Spacer()
                     Button("Zkusit znovu") { search.retry() }.disabled(search.loading)
                 }.padding(16).background(Color.orange.opacity(0.08))
             }
             if search.files.isEmpty {
                 VStack(spacing: 14) {
-                    if search.loading { ProgressView(); Text("Hledám „\(search.query)“…") }
+                    if search.loading { ProgressView(); Text(LF("Hledám „%@“…", search.query)) }
                     else {
                         Image(systemName: "doc.text.magnifyingglass").font(.system(size: 44, weight: .light)).foregroundStyle(.tint)
-                        Text(search.searched ? "Žádné výsledky" : "Co chcete najít?").font(.title2.bold())
-                        Text(search.searched ? "Zkuste jiný název nebo kategorii." : "Zadejte název a stiskněte Enter nebo Hledat.").foregroundStyle(.secondary)
+                        Text(L(search.searched ? "Žádné výsledky" : "Co chcete najít?")).font(.title2.bold())
+                        Text(L(search.searched ? "Zkuste jiný název nebo kategorii." : "Zadejte název a stiskněte Enter nebo Hledat.")).foregroundStyle(.secondary)
                     }
                 }.frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
@@ -67,23 +67,23 @@ struct PublicSearchView: View {
                 }
             }
             HStack {
-                Text(search.searched ? "„\(search.query)“ · načteno \(search.files.count) z \(search.total) výsledků" : "Výsledky poskytuje Webshare.cz").font(.caption).foregroundStyle(.secondary).lineLimit(1)
+                Text(search.searched ? LF("„%@“ · načteno %lld z %lld výsledků", search.query, search.files.count, search.total) : L("Výsledky poskytuje Webshare.cz")).font(.caption).foregroundStyle(.secondary).lineLimit(1)
                 Spacer()
                 if search.hasMore { Button("Načíst další výsledky") { search.more() }.disabled(search.loading) }
             }.padding(16)
             Divider()
             HStack {
-                Text("Vybráno: \(selected.count)").foregroundStyle(.secondary)
+                Text(LF("Vybráno: %lld", selected.count)).foregroundStyle(.secondary)
                 Spacer()
                 Button {
                     NSPasteboard.general.clearContents()
                     NSPasteboard.general.setString(selected.map(\.link).joined(separator: "\n"), forType: .string)
                     copied = true
-                } label: { Label(copied ? "Zkopírováno" : "Kopírovat odkazy", systemImage: "doc.on.doc") }.disabled(selected.isEmpty)
+                } label: { Label(L(copied ? "Zkopírováno" : "Kopírovat odkazy"), systemImage: "doc.on.doc") }.disabled(selected.isEmpty)
                 Button {
                     store.downloadUploads(selected)
                     added = true
-                } label: { Label(added ? "Přidáno do fronty" : "Přidat ke stažení", systemImage: added ? "checkmark" : "arrow.down.to.line") }.disabled(selected.isEmpty)
+                } label: { Label(L(added ? "Přidáno do fronty" : "Přidat ke stažení"), systemImage: added ? "checkmark" : "arrow.down.to.line") }.disabled(selected.isEmpty)
             }.padding(16)
             Text("Vybrané soubory se přidají do fronty Stahování. Soubory se zámkem vyžadují heslo a zatím je nelze stáhnout v aplikaci.").font(.caption).foregroundStyle(.secondary).padding(.horizontal, 16).padding(.bottom, 12)
         }

@@ -4,9 +4,8 @@ cd "$(dirname "$0")/.."
 swift build -c release
 APP="$PWD/dist/Webshare Manager.app"
 mkdir -p "$APP/Contents/Frameworks"
-mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources/cs.lproj"
-printf '"CFBundleDisplayName" = "Webshare Manager";\n' > "$APP/Contents/Resources/cs.lproj/InfoPlist.strings"
-printf '/* České uživatelské rozhraní. */\n' > "$APP/Contents/Resources/cs.lproj/Localizable.strings"
+mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
+ditto Resources "$APP/Contents/Resources"
 BIN_DIR="$(swift build -c release --show-bin-path)"
 cp Assets/WebshareManager.icns "$APP/Contents/Resources/WebshareManager.icns"
 cp "$BIN_DIR/Webshare" "$APP/Contents/MacOS/Webshare"
@@ -23,10 +22,10 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
 <key>CFBundleDisplayName</key><string>Webshare Manager</string>
 <key>CFBundleIconFile</key><string>WebshareManager</string>
 <key>CFBundleDevelopmentRegion</key><string>cs</string>
-<key>CFBundleLocalizations</key><array><string>cs</string></array>
+<key>CFBundleLocalizations</key><array><string>cs</string><string>sk</string></array>
 <key>CFBundlePackageType</key><string>APPL</string>
-<key>CFBundleShortVersionString</key><string>0.6.0</string>
-<key>CFBundleVersion</key><string>12</string>
+<key>CFBundleShortVersionString</key><string>0.7.0</string>
+<key>CFBundleVersion</key><string>13</string>
 <key>LSMinimumSystemVersion</key><string>14.0</string>
 <key>NSHighResolutionCapable</key><true/>
 </dict></plist>

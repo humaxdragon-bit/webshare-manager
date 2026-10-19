@@ -40,9 +40,9 @@ import AppKit
         busy = true; defer { busy = false }
         do {
             let user = try await API(token: saved).call("user_data")
-            token = saved; signedIn = true; account = user["username"] ?? "Přihlášeno"
+            token = saved; signedIn = true; account = user["username"] ?? L("Přihlášeno")
             Task { [weak self] in await self?.loadUploads() }
-        } catch { self.error = "Uložené přihlášení se nepodařilo ověřit: \(error.localizedDescription)" }
+        } catch { self.error = LF("Uložené přihlášení se nepodařilo ověřit: %@", error.localizedDescription) }
     }
     func login(_ username: String, password: String, remember: Bool) async {
         busy = true; defer { busy = false }
@@ -107,7 +107,7 @@ import AppKit
         if available.count != files.count { error = "Soubory chráněné heslem zatím nelze stáhnout v aplikaci. Ostatní vybrané soubory byly přidány do fronty." }
         save(); pump()
     }
-    func save() { do { try JSONEncoder().encode(jobs).write(to: file, options: .atomic) } catch { self.error = "Frontu se nepodařilo uložit: \(error.localizedDescription)" } }
+    func save() { do { try JSONEncoder().encode(jobs).write(to: file, options: .atomic) } catch { self.error = LF("Frontu se nepodařilo uložit: %@", error.localizedDescription) } }
     func addLinks(_ text: String) -> Bool {
         let lines = text.split(whereSeparator: { $0.isWhitespace }).map(String.init)
         let ids = lines.compactMap(API.identifier)

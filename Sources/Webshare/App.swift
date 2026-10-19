@@ -37,8 +37,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { true }
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         if updating { return .terminateNow }
-        let alert = NSAlert(); alert.messageText = "Ukončit Webshare Manager?"; alert.informativeText = "Probíhající přenosy se přeruší. Uloženou frontu lze při příštím spuštění spustit znovu od začátku."
-        alert.addButton(withTitle: "Ukončit"); alert.addButton(withTitle: "Zpět")
+        let alert = NSAlert(); alert.messageText = L("Ukončit Webshare Manager?"); alert.informativeText = L("Probíhající přenosy se přeruší. Uloženou frontu lze při příštím spuštění spustit znovu od začátku.")
+        alert.addButton(withTitle: L("Ukončit")); alert.addButton(withTitle: L("Zpět"))
         return alert.runModal() == .alertFirstButtonReturn ? .terminateNow : .terminateCancel
     }
 }
@@ -66,14 +66,14 @@ struct ContentView: View {
                 VStack(spacing: 6) {
                     ForEach(sections, id: \.self) { item in
                         Button { section = item } label: {
-                            HStack { Label(item, systemImage: icon(item)); Spacer()
+                            HStack { Label(L(item), systemImage: icon(item)); Spacer()
                                 if item != "Moje soubory" && item != "Hledat na Webshare" { Text("\(count(item))").foregroundStyle(.secondary) } }.padding(10).background(section == item ? Color.accentColor.opacity(0.12) : .clear, in: RoundedRectangle(cornerRadius: 8))
                         }.buttonStyle(.plain)
                     }
                 }
                 Spacer()
                 VStack(alignment: .leading, spacing: 10) {
-                    Label(store.signedIn ? store.account : "Nejste přihlášeni", systemImage: "person.crop.circle").font(.headline).lineLimit(1)
+                    Label(store.signedIn ? store.account : L("Nejste přihlášeni"), systemImage: "person.crop.circle").font(.headline).lineLimit(1)
                     if store.signedIn { Button("Odhlásit se") { Task { await store.logout() } }.disabled(store.busy) }
                     else { Button("Přihlásit se") { showLogin = true }.buttonStyle(.borderedProminent).disabled(store.busy) }
                     Text("Neoficiální klient pro Webshare.cz").font(.caption).foregroundStyle(.secondary)
@@ -88,7 +88,7 @@ struct ContentView: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 7) {
-                        Text(section).font(.largeTitle.bold())
+                        Text(L(section)).font(.largeTitle.bold())
                         Text("Vaše soubory. Jedna přehledná fronta.").foregroundStyle(.secondary)
                     }
                     Spacer()
@@ -96,11 +96,11 @@ struct ContentView: View {
                     Button { store.chooseFiles() } label: { Label("Nahrát soubory", systemImage: "square.and.arrow.up") }.buttonStyle(.borderedProminent)
                 }.padding(24)
                 HStack(spacing: 16) {
-                    Label("\(store.jobs.filter { $0.state == .running }.count) aktivní", systemImage: "arrow.triangle.2.circlepath")
-                    Text("\(store.jobs.filter { $0.state == .waiting }.count) ve frontě").foregroundStyle(.secondary)
+                    Label(LF("%lld aktivní", store.jobs.filter { $0.state == .running }.count), systemImage: "arrow.triangle.2.circlepath")
+                    Text(LF("%lld ve frontě", store.jobs.filter { $0.state == .waiting }.count)).foregroundStyle(.secondary)
                     Spacer()
                     Picker("Současně", selection: $store.limit) { ForEach(1...5, id: \.self) { Text("\($0)").tag($0) } }.frame(width: 145).onChange(of: store.limit) { store.pump() }
-                    Button(store.running ? "Zastavit" : "Spustit frontu", systemImage: store.running ? "stop.fill" : "play.fill") { if store.running { store.stop() } else { store.start() } }.disabled(!store.signedIn)
+                    Button(L(store.running ? "Zastavit" : "Spustit frontu"), systemImage: store.running ? "stop.fill" : "play.fill") { if store.running { store.stop() } else { store.start() } }.disabled(!store.signedIn)
                 }.font(.callout).padding(.horizontal, 24).padding(.bottom, 18)
                 Divider()
                 if visible.isEmpty {
@@ -138,7 +138,7 @@ struct ContentView: View {
                 HStack { Button("Zrušit") { showLinks = false }; Spacer(); Button("Přidat do fronty") { if store.addLinks(links) { links = ""; showLinks = false } }.buttonStyle(.borderedProminent) }
             }.padding(24).frame(width: 560)
         }
-        .alert("Webshare Manager", isPresented: Binding(get: { store.error != nil }, set: { if !$0 { store.error = nil } })) { Button("OK") { store.error = nil } } message: { Text(store.error ?? "") }
+        .alert("Webshare Manager", isPresented: Binding(get: { store.error != nil }, set: { if !$0 { store.error = nil } })) { Button("OK") { store.error = nil } } message: { Text(L(store.error ?? "")) }
     }
     func icon(_ item: String) -> String { switch item { case "Hledat na Webshare": return "magnifyingglass"; case "Stahování": return "arrow.down.circle"; case "Nahrávání": return "arrow.up.circle"; case "Dokončené": return "checkmark.circle"; case "Moje soubory": return "folder.badge.person.crop"; default: return "tray.full" } }
     func count(_ item: String) -> Int { if item == "Moje soubory" { return store.uploadedFiles.count }; return store.jobs.filter { item == "Všechny přenosy" || (item == "Stahování" && $0.kind == .download) || (item == "Nahrávání" && $0.kind == .upload) || (item == "Dokončené" && $0.state == .done) }.count }
@@ -151,10 +151,10 @@ struct TransferRow: View {
         HStack(alignment: .top, spacing: 14) {
             Image(systemName: job.kind == .download ? "arrow.down.document" : "arrow.up.document").font(.title).foregroundStyle(.tint).frame(width: 38).padding(.top, 4)
             VStack(alignment: .leading, spacing: 8) {
-                HStack { Text(job.name).font(.headline).lineLimit(1); Spacer(); Text(job.kind == .download ? "STAŽENÍ" : "NAHRÁNÍ").font(.caption2.weight(.semibold)).foregroundStyle(.secondary) }
+                HStack { Text(job.name).font(.headline).lineLimit(1); Spacer(); Text(L(job.kind == .download ? "STAŽENÍ" : "NAHRÁNÍ")).font(.caption2.weight(.semibold)).foregroundStyle(.secondary) }
                 if job.state == .running { ProgressView(value: job.fraction) }
                 HStack(alignment: .top) {
-                    Text(job.message).foregroundStyle(job.state == .failed ? Color.red : Color.secondary).textSelection(.enabled)
+                    Text(L(job.message)).foregroundStyle(job.state == .failed ? Color.red : Color.secondary).textSelection(.enabled)
                     Spacer()
                     if job.state == .running && job.speed > 0 { Text(ByteCountFormatter.string(fromByteCount: Int64(job.speed), countStyle: .file) + "/s").monospacedDigit() }
                 }.font(.caption)
@@ -168,7 +168,7 @@ struct TransferRow: View {
                 Button {
                     if job.kind == .download { NSWorkspace.shared.activateFileViewerSelecting([URL(fileURLWithPath: job.result)]) }
                     else { NSPasteboard.general.clearContents(); NSPasteboard.general.setString(job.result, forType: .string) }
-                } label: { Image(systemName: job.kind == .download ? "folder" : "doc.on.doc") }.help(job.kind == .download ? "Ukázat ve Finderu" : "Zkopírovat odkaz")
+                } label: { Image(systemName: job.kind == .download ? "folder" : "doc.on.doc") }.help(L(job.kind == .download ? "Ukázat ve Finderu" : "Zkopírovat odkaz"))
             }
         }.padding(16).background(Color(nsColor: .controlBackgroundColor), in: RoundedRectangle(cornerRadius: 12))
     }
@@ -188,7 +188,7 @@ struct LoginView: View {
             Toggle("Zapamatovat přihlášení v Klíčence", isOn: $remember)
             Text("Vaše heslo se na disk neukládá.").font(.caption).foregroundStyle(.secondary)
             HStack { Button("Zrušit") { dismiss() }.disabled(store.busy); Spacer(); if store.busy { ProgressView().controlSize(.small) }; Button("Přihlásit se") { Task { await store.login(username.trimmingCharacters(in: .whitespacesAndNewlines), password: password, remember: remember); if store.signedIn { password = ""; dismiss() } } }.buttonStyle(.borderedProminent).disabled(store.busy || username.isEmpty || password.isEmpty) }
-            if let error = store.error { Text(error).font(.caption).foregroundStyle(.red).textSelection(.enabled) }
+            if let error = store.error { Text(L(error)).font(.caption).foregroundStyle(.red).textSelection(.enabled) }
         }.padding(28).frame(width: 440)
     }
 }

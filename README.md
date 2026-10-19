@@ -15,7 +15,7 @@ Aplikaci stáhnete v [GitHub Releases](https://github.com/humaxdragon-bit/websha
 - Procházení nahraných souborů, složek a podsložek na účtu Webshare.
 - Veřejné hledání, kategorie, řazení a výběr více výsledků ke stažení.
 - Kopírování odkazů a zobrazení stažených souborů ve Finderu.
-- České rozhraní včetně horních nabídek.
+- České a slovenské rozhraní včetně horních nabídek. Jazyk se zvolí podle nastavení macOS; výchozí jazyk je čeština.
 - Nabídka **Webshare Manager → Zkontrolovat aktualizace…** pro stažení a instalaci nových verzí.
 
 Přihlášení probíhá přímo účtem Webshare.cz. Heslo se neukládá; přihlášení lze zapamatovat v Klíčence macOS. Nastavení a fronta zůstávají v uživatelské složce aplikace. Žádné uživatelské údaje ani soubory nejsou součástí tohoto repozitáře.

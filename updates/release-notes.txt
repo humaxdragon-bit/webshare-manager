@@ -1,9 +1,14 @@
-Webshare Manager 0.6.0
+Webshare Manager 0.7.0
 
-• Nabídka Zkontrolovat aktualizace… v horní liště.
-• Stažení a instalace ověřených aktualizací přímo z GitHubu.
-• Aktualizace počká na dokončení právě probíhajících přenosů.
-• České rozhraní, správa složek a veřejné vyhledávání.
+Čeština:
+• Přidána slovenská lokalizace celého rozhraní, dialogů a horních nabídek.
+• Jazyk se vybírá podle nastavení macOS; čeština zůstává výchozí.
+• Přeložené stavy přenosů, chybová hlášení a texty s počty položek.
 
-Testovací vydání pro Apple Silicon a macOS 14 nebo novější.
+Slovenčina:
+• Pridaná slovenská lokalizácia celého rozhrania, dialógov a horných ponúk.
+• Jazyk sa vyberá podľa nastavenia macOS; predvoleným jazykom zostáva čeština.
+• Preložené stavy prenosov, chybové hlásenia a texty s počtami položiek.
+
+Testovací vydání / Testovacie vydanie: Apple Silicon, macOS 14+.
 Aplikace zatím nemá podpis Developer ID ani notarizaci od Applu.
