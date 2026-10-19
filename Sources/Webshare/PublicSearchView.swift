@@ -13,14 +13,10 @@ struct PublicSearchView: View {
     private var selected: [UploadedFile] { search.files.filter { selection.contains($0.id) } }
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Hledat na Webshare").font(.largeTitle.bold())
-                Text("Vyhledávání ve veřejných souborech na celém Webshare.").foregroundStyle(.secondary)
-            }.padding(24)
+            WMPageHeading(title: "Hledat na Webshare", subtitle: "Vyhledávání ve veřejných souborech na celém Webshare.", icon: "magnifyingglass").frame(maxWidth: .infinity, alignment: .leading).padding(28)
             HStack {
-                Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
-                TextField("Zadejte název souboru", text: $text).textFieldStyle(.roundedBorder).onSubmit { submit() }
-                Button("Hledat") { submit() }.buttonStyle(.borderedProminent).disabled(text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                WMSearchField(placeholder: "Zadejte název souboru", text: $text) { submit() }
+                Button("Hledat") { submit() }.buttonStyle(WMButtonStyle(primary: true)).disabled(text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }.padding(.horizontal, 24)
             HStack(spacing: 20) {
                 Picker("Řazení", selection: $sort) {
@@ -64,7 +60,7 @@ struct PublicSearchView: View {
                     }.width(min: 200, ideal: 450)
                     TableColumn("Velikost") { file in Text(ByteCountFormatter.string(fromByteCount: file.size, countStyle: .file)).monospacedDigit() }.width(100)
                     TableColumn("Typ") { file in Text(URL(fileURLWithPath: file.name).pathExtension.uppercased()).foregroundStyle(.secondary) }.width(65)
-                }
+                }.modifier(WMTableCard())
             }
             HStack {
                 Text(search.searched ? LF("„%@“ · načteno %lld z %lld výsledků", search.query, search.files.count, search.total) : L("Výsledky poskytuje Webshare.cz")).font(.caption).foregroundStyle(.secondary).lineLimit(1)
@@ -83,11 +79,12 @@ struct PublicSearchView: View {
                 Button {
                     store.downloadUploads(selected)
                     added = true
-                } label: { Label(L(added ? "Přidáno do fronty" : "Přidat ke stažení"), systemImage: added ? "checkmark" : "arrow.down.to.line") }.disabled(selected.isEmpty)
+                } label: { Label(L(added ? "Přidáno do fronty" : "Přidat ke stažení"), systemImage: added ? "checkmark" : "arrow.down.to.line") }.buttonStyle(WMButtonStyle(primary: true)).disabled(selected.isEmpty)
             }.padding(16)
             Text("Vybrané soubory se přidají do fronty Stahování. Soubory se zámkem vyžadují heslo a zatím je nelze stáhnout v aplikaci.").font(.caption).foregroundStyle(.secondary).padding(.horizontal, 16).padding(.bottom, 12)
         }
-        .background(Color(nsColor: .windowBackgroundColor))
+        .background(WMTheme.canvas)
+        .buttonStyle(WMButtonStyle())
         .onAppear { if text.isEmpty { text = search.query }; sort = search.sort; category = search.category }
         .onChange(of: sort) { if search.searched && (sort != search.sort || category != search.category) { submit() } }
         .onChange(of: category) { if search.searched && (sort != search.sort || category != search.category) { submit() } }

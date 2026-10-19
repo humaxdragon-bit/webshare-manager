@@ -22,19 +22,16 @@ struct UploadedFilesView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 7) {
-                    Text("Moje soubory").font(.largeTitle.bold())
-                    Text("Soubory nahrané na váš účet Webshare.").foregroundStyle(.secondary)
-                }
+                WMPageHeading(title: "Moje soubory", subtitle: "Soubory nahrané na váš účet Webshare.", icon: "folder")
                 Spacer()
                 Button { Task { await store.loadUploads(refresh: true) } } label: { Label("Obnovit", systemImage: "arrow.clockwise") }.disabled(!store.signedIn || store.uploadsLoading)
-                Button { store.chooseFiles() } label: { Label("Nahrát soubory", systemImage: "square.and.arrow.up") }.buttonStyle(.borderedProminent).disabled(!store.signedIn)
+                Button { store.chooseFiles() } label: { Label("Nahrát soubory", systemImage: "square.and.arrow.up") }.buttonStyle(WMButtonStyle(primary: true)).disabled(!store.signedIn)
             }.padding(24)
             if !store.signedIn {
                 VStack(spacing: 16) {
                     Image(systemName: "person.crop.circle").font(.system(size: 42)).foregroundStyle(.tint)
                     Text("Přihlaste se pro zobrazení svých souborů").font(.title3)
-                    Button("Přihlásit se", action: login).buttonStyle(.borderedProminent).disabled(store.busy)
+                    Button("Přihlásit se", action: login).buttonStyle(WMButtonStyle(primary: true)).disabled(store.busy)
                 }.frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 HStack {
@@ -61,8 +58,7 @@ struct UploadedFilesView: View {
                     }.padding(.horizontal, 24).padding(.bottom, 12)
                 }
                 HStack {
-                    Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
-                    TextField("Hledat v načtených souborech a složkách", text: $search).textFieldStyle(.roundedBorder)
+                    WMSearchField(placeholder: "Hledat v načtených souborech a složkách", text: $search)
                     if store.uploadsLoading { ProgressView().controlSize(.small) }
                 }.padding(.horizontal, 24).padding(.bottom, 16)
                 if let error = store.uploadsError {
@@ -98,6 +94,7 @@ struct UploadedFilesView: View {
                         TableColumn("Nahráno") { file in Text(file.uploaded).font(.caption).foregroundStyle(.secondary) }.width(135)
                         TableColumn("Stažení") { file in Text(file.isFolder ? "—" : "\(file.downloads)").monospacedDigit() }.width(60)
                     }
+                    .modifier(WMTableCard())
                     .contextMenu(forSelectionType: String.self) { ids in
                         if let folder = filtered.first(where: { ids.contains($0.id) && $0.isFolder }) {
                             Button("Otevřít složku") { openPath(folder.folderPath) }
@@ -122,12 +119,13 @@ struct UploadedFilesView: View {
                     Spacer()
                     if let folder = selectedFolder { Button("Otevřít složku") { openPath(folder.folderPath) } }
                     Button { copyLinks() } label: { Label(L(copied ? "Zkopírováno" : "Kopírovat odkazy"), systemImage: copied ? "checkmark" : "doc.on.doc") }.disabled(selected.isEmpty)
-                    Button { store.downloadUploads(selected) } label: { Label("Přidat ke stažení", systemImage: "arrow.down.to.line") }.disabled(selected.isEmpty)
+                    Button { store.downloadUploads(selected) } label: { Label("Přidat ke stažení", systemImage: "arrow.down.to.line") }.buttonStyle(WMButtonStyle(primary: true)).disabled(selected.isEmpty)
                 }.padding(16)
                 Text(L(store.uploadsFolderMode ? "Složku otevřete kliknutím na její název nebo dvojklikem na řádek. Hledání prochází načtený obsah této složky." : "Stahování se přidá do fronty. Hledání prochází načtené soubory; další načtete tlačítkem výše.")).font(.caption).foregroundStyle(.secondary).padding(.horizontal, 16).padding(.bottom, 12)
             }
         }
-        .background(Color(nsColor: .windowBackgroundColor))
+        .background(WMTheme.canvas)
+        .buttonStyle(WMButtonStyle())
         .task(id: store.signedIn) { if store.signedIn && !store.uploadsLoaded { await store.loadUploads() } }
         .onChange(of: search) { selection = []; copied = false }
         .onChange(of: selection) { copied = false }

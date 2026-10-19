@@ -1,14 +1,11 @@
-Webshare Manager 0.7.0
+Webshare Manager 0.8.0
 
-Čeština:
-• Přidána slovenská lokalizace celého rozhraní, dialogů a horních nabídek.
-• Jazyk se vybírá podle nastavení macOS; čeština zůstává výchozí.
-• Přeložené stavy přenosů, chybová hlášení a texty s počty položek.
+• Nový moderní vzhled s modrými a tyrkysovými akcenty.
+• Přehlednější boční panel a karty přenosů.
+• Výraznější nahrávání a plocha pro přetažení souborů.
+• Sjednocený vzhled knihovny, hledání a přihlášení.
+• Světlý i tmavý vzhled podle nastavení macOS.
+• Zachována čeština i slovenština.
 
-Slovenčina:
-• Pridaná slovenská lokalizácia celého rozhrania, dialógov a horných ponúk.
-• Jazyk sa vyberá podľa nastavenia macOS; predvoleným jazykom zostáva čeština.
-• Preložené stavy prenosov, chybové hlásenia a texty s počtami položiek.
-
-Testovací vydání / Testovacie vydanie: Apple Silicon, macOS 14+.
+Testovací vydání pro Apple Silicon, macOS 14+.
 Aplikace zatím nemá podpis Developer ID ani notarizaci od Applu.
