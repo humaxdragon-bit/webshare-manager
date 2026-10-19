@@ -21,6 +21,10 @@ Aplikaci stáhnete v [GitHub Releases](https://github.com/humaxdragon-bit/websha
 
 Přihlášení probíhá přímo účtem Webshare.cz. Heslo se neukládá; přihlášení lze zapamatovat v Klíčence macOS. Nastavení a fronta zůstávají v uživatelské složce aplikace. Žádné uživatelské údaje ani soubory nejsou součástí tohoto repozitáře.
 
+## Nahrávání do složky
+
+V **Moje soubory** otevřete cílovou složku a klikněte na **Nahrát sem**. Vybrané soubory se přidají do fronty s touto cílovou složkou. Cíl je uvedený u každého nahrávání a nezmění se při dalším procházení složek. Tlačítko **Nahrát soubory** v přenosech a v přehledu všech souborů nahrává do hlavní složky.
+
 ## Aktualizace
 
 Aktualizace se stahují z GitHub Releases. Jejich podpis se ověřuje před rozbalením. Instalace počká na dokončení probíhajících přenosů a aplikaci restartuje. Volba automatických kontrol se řídí nastavením aktualizačního systému.

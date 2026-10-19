@@ -25,6 +25,8 @@ struct Transfer: Identifiable, Codable {
     var total: Int64 = 0
     var result: String = ""
     var speed: Double = 0
+    // Old queues stored "Webshare.cz" instead of a path; they still target root.
+    var uploadFolder: String { destination.hasPrefix("/") ? UploadedFile.normalizedPath(destination) : "/" }
     var fraction: Double { total > 0 ? min(1, Double(completed) / Double(total)) : 0 }
 }
 
@@ -79,8 +81,7 @@ enum Transfers {
             let output = try FileHandle(forWritingTo: temporary)
             defer { try? output.close() }
             func write(_ text: String) throws { try output.write(contentsOf: Data(text.utf8)) }
-            var fields = [("wst", api.token), ("total", String(fileSize)), ("offset", String(offset)), ("folder", "/")]
-            if let ident { fields.append(("ident", ident)) }
+            let fields = uploadFields(job, token: api.token, size: fileSize, offset: offset, ident: ident)
             for (key, value) in fields {
                 try write("--\(boundary)\r\nContent-Disposition: form-data; name=\"\(key)\"\r\n\r\n\(value)\r\n")
             }
@@ -111,6 +112,11 @@ enum Transfers {
         } while offset < Int64(fileSize)
         guard let ident else { throw AppError("Server nepotvrdil dokončení nahrávání.") }
         return "https://webshare.cz/#/file/\(ident)"
+    }
+    static func uploadFields(_ job: Transfer, token: String, size: Int, offset: Int64, ident: String?) -> [(String, String)] {
+        var fields = [("wst", token), ("total", String(size)), ("offset", String(offset)), ("folder", job.uploadFolder)]
+        if let ident { fields.append(("ident", ident)) }
+        return fields
     }
     static func uploadIdentifier(_ data: Data) throws -> String {
         let ident: String?

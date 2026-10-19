@@ -86,6 +86,9 @@ struct TransferRow: View {
                 .frame(width: 46, height: 50).background((job.kind == .download ? WMTheme.accent : WMTheme.teal).opacity(0.1), in: RoundedRectangle(cornerRadius: 13))
             VStack(alignment: .leading, spacing: 8) {
                 HStack { Text(job.name).font(.headline).lineLimit(1); Spacer(); Text(L(job.kind == .download ? "STAŽENÍ" : "NAHRÁNÍ")).font(.system(size: 9, weight: .semibold)).tracking(0.8).foregroundStyle(job.kind == .download ? WMTheme.accent : WMTheme.teal).padding(.horizontal, 8).padding(.vertical, 5).background(WMTheme.elevated, in: Capsule()) }
+                if job.kind == .upload {
+                    Label(LF("Cílová složka: %@", job.uploadFolder), systemImage: "folder").font(.caption).foregroundStyle(.secondary).textSelection(.enabled)
+                }
                 if job.state == .running { ProgressView(value: job.fraction) }
                 HStack(alignment: .top) {
                     Text(L(job.message)).foregroundStyle(job.state == .failed ? Color.red : Color.secondary).textSelection(.enabled)

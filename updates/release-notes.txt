@@ -1,11 +1,9 @@
-Webshare Manager 0.8.1
+Webshare Manager 0.9.0
 
-• Přizpůsobení rozložení menším oknům.
-• Nový moderní vzhled s modrými a tyrkysovými akcenty.
-• Přehlednější boční panel a karty přenosů.
-• Výraznější nahrávání a plocha pro přetažení souborů.
-• Sjednocený vzhled knihovny, hledání a přihlášení.
-• Světlý i tmavý vzhled podle nastavení macOS.
+• Nahrávání přímo do otevřené složky přes „Moje soubory → Nahrát sem“.
+• Cílová složka je vidět u každého nahrávání ve frontě.
+• Každý přenos si pamatuje svůj cíl i po restartování aplikace.
+• Dříve přidaná nahrávání zůstávají cílená do hlavní složky.
 • Zachována čeština i slovenština.
 
 Testovací vydání pro Apple Silicon, macOS 14+.

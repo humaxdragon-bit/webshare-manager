@@ -117,14 +117,21 @@ import AppKit
         }
         save(); pump(); return true
     }
-    func addFiles(_ urls: [URL]) {
+    func addFiles(_ urls: [URL], destination: String = "/") {
         for url in urls {
             guard (try? url.resourceValues(forKeys: [.isRegularFileKey]).isRegularFile) == true else { error = "Složky nelze nahrávat přímo. Vyberte soubory nebo ZIP archiv."; continue }
-            jobs.append(Transfer(kind: .upload, source: url.path, name: url.lastPathComponent, destination: "Webshare.cz"))
+            jobs.append(Transfer(kind: .upload, source: url.path, name: url.lastPathComponent, destination: UploadedFile.normalizedPath(destination)))
         }
         save(); pump()
     }
-    func chooseFiles() { let p = NSOpenPanel(); p.canChooseDirectories = false; p.allowsMultipleSelection = true; if p.runModal() == .OK { addFiles(p.urls) } }
+    func chooseFiles(destination: String = "/") {
+        let target = UploadedFile.normalizedPath(destination)
+        let p = NSOpenPanel()
+        p.canChooseDirectories = false; p.allowsMultipleSelection = true
+        p.message = LF("Cílová složka na Webshare: %@", target)
+        p.prompt = L("Přidat do fronty")
+        if p.runModal() == .OK { addFiles(p.urls, destination: target) }
+    }
     func chooseFolder() { let p = NSOpenPanel(); p.canChooseFiles = false; p.canChooseDirectories = true; p.canCreateDirectories = true; if p.runModal() == .OK, let url = p.url { folder = url.path; UserDefaults.standard.set(folder, forKey: "folder") } }
     func start() { guard signedIn else { error = "Nejdřív se přihlaste k Webshare."; return }; running = true; pump() }
     func stop() { running = false; for id in Array(workers.keys) { cancel(id) } }

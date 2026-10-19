@@ -88,6 +88,16 @@ import Foundation
             precondition(live.total > 0 && !live.files.isEmpty)
             print("Živé API veřejného hledání: načteno \(live.files.count) z \(live.total) výsledků.")
         }
+        let folderUpload = Transfer(kind: .upload, source: "/tmp/file.zip", name: "file.zip", destination: "/Seriály/Seriál č. 1/")
+        let restoredUpload = try JSONDecoder().decode(Transfer.self, from: JSONEncoder().encode(folderUpload))
+        for (offset, ident) in [(Int64(0), nil as String?), (Int64(67108864), "Abc123def4")] {
+            let fields = Dictionary(uniqueKeysWithValues: Transfers.uploadFields(restoredUpload, token: "test", size: 100000000, offset: offset, ident: ident))
+            precondition(fields["folder"] == "/Seriály/Seriál č. 1")
+            precondition(fields["offset"] == String(offset) && fields["ident"] == ident)
+        }
+        let legacyUpload = Transfer(kind: .upload, source: "/tmp/file.zip", name: "file.zip", destination: "Webshare.cz")
+        precondition(legacyUpload.uploadFolder == "/")
+        print("Cílová složka uploadu: zachování po uložení fronty, stejný cíl pro všechny bloky a kompatibilita starší fronty prošly.")
         if let endpoint = ProcessInfo.processInfo.environment["WEBSHARE_TEST_ENDPOINT"], let url = URL(string: endpoint) {
             let counter = ProgressCounter()
             let progress = TransferProgress { bytes, _ in counter.record(bytes) }

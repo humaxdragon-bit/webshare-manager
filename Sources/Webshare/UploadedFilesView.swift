@@ -25,7 +25,10 @@ struct UploadedFilesView: View {
                 WMPageHeading(title: "Moje soubory", subtitle: "Soubory nahrané na váš účet Webshare.", icon: "folder")
                 Spacer()
                 Button { Task { await store.loadUploads(refresh: true) } } label: { Label("Obnovit", systemImage: "arrow.clockwise") }.disabled(!store.signedIn || store.uploadsLoading)
-                Button { store.chooseFiles() } label: { Label("Nahrát soubory", systemImage: "square.and.arrow.up") }.buttonStyle(WMButtonStyle(primary: true)).disabled(!store.signedIn)
+                Button { store.chooseFiles(destination: store.uploadsFolderMode ? store.uploadsFolderPath : "/") } label: {
+                    Label(L(store.uploadsFolderMode ? "Nahrát sem" : "Nahrát soubory"), systemImage: "square.and.arrow.up")
+                }.buttonStyle(WMButtonStyle(primary: true)).disabled(!store.signedIn)
+                    .help(LF("Cílová složka na Webshare: %@", store.uploadsFolderMode ? store.uploadsFolderPath : "/"))
             }.padding(24)
             if !store.signedIn {
                 VStack(spacing: 16) {
