@@ -6,28 +6,25 @@
     <description>Aktualizace aplikace Webshare Manager</description>
     <language>cs</language>
     <item>
-      <title>Webshare Manager 0.7.0</title>
-      <pubDate>Mon, 19 Oct 2026 18:52:28 GMT</pubDate>
-      <sparkle:version>13</sparkle:version>
-      <sparkle:shortVersionString>0.7.0</sparkle:shortVersionString>
+      <title>Webshare Manager 0.8.0</title>
+      <pubDate>Mon, 19 Oct 2026 18:59:04 GMT</pubDate>
+      <sparkle:version>14</sparkle:version>
+      <sparkle:shortVersionString>0.8.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
       <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-      <description>Webshare Manager 0.7.0
+      <description>Webshare Manager 0.8.0
 
-Čeština:
-• Přidána slovenská lokalizace celého rozhraní, dialogů a horních nabídek.
-• Jazyk se vybírá podle nastavení macOS; čeština zůstává výchozí.
-• Přeložené stavy přenosů, chybová hlášení a texty s počty položek.
+• Nový moderní vzhled s modrými a tyrkysovými akcenty.
+• Přehlednější boční panel a karty přenosů.
+• Výraznější nahrávání a plocha pro přetažení souborů.
+• Sjednocený vzhled knihovny, hledání a přihlášení.
+• Světlý i tmavý vzhled podle nastavení macOS.
+• Zachována čeština i slovenština.
 
-Slovenčina:
-• Pridaná slovenská lokalizácia celého rozhrania, dialógov a horných ponúk.
-• Jazyk sa vyberá podľa nastavenia macOS; predvoleným jazykom zostáva čeština.
-• Preložené stavy prenosov, chybové hlásenia a texty s počtami položiek.
-
-Testovací vydání / Testovacie vydanie: Apple Silicon, macOS 14+.
+Testovací vydání pro Apple Silicon, macOS 14+.
 Aplikace zatím nemá podpis Developer ID ani notarizaci od Applu.
 </description>
-      <enclosure url="https://github.com/humaxdragon-bit/webshare-manager/releases/download/v0.7.0/Webshare-Manager-0.7.0-arm64.zip" length="2239991" type="application/octet-stream" sparkle:edSignature="MOmRRzho4BZfImDjvJu6nt7auc8Z/YlTHBDgyVre5eXEIxg0YlQZqoSGAava+JFO9dLUcTZiG/l67jWFTX3IDg==" />
+      <enclosure url="https://github.com/humaxdragon-bit/webshare-manager/releases/download/v0.8.0/Webshare-Manager-0.8.0-arm64.zip" length="2311480" type="application/octet-stream" sparkle:edSignature="/yeJ+1rPqPS4x9iAKW9w08hHhoeRytOSfP2pfjpxDhb1qQxkrtBkAxVRPvIlc8mMJsKEDnX8v3FGwiIIpSY/AQ==" />
     </item>
   </channel>
 </rss>
