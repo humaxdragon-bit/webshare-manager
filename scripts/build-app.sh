@@ -12,7 +12,7 @@ cp Assets/WebshareManager.icns "$APP/Contents/Resources/WebshareManager.icns"
 cp "$BIN_DIR/Webshare" "$APP/Contents/MacOS/Webshare"
 SPARKLE="$PWD/.build/artifacts/sparkle/Sparkle/Sparkle.xcframework/macos-arm64_x86_64/Sparkle.framework"
 ditto "$SPARKLE" "$APP/Contents/Frameworks/Sparkle.framework"
-cp .build/checkouts/Sparkle/LICENSE "$APP/Contents/Resources/Sparkle-LICENSE.txt"
+cp -f .build/checkouts/Sparkle/LICENSE "$APP/Contents/Resources/Sparkle-LICENSE.txt"
 cat > "$APP/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
