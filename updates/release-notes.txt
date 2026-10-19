@@ -1,0 +1,9 @@
+Webshare Manager 0.6.0
+
+• Nabídka Zkontrolovat aktualizace… v horní liště.
+• Stažení a instalace ověřených aktualizací přímo z GitHubu.
+• Aktualizace počká na dokončení právě probíhajících přenosů.
+• České rozhraní, správa složek a veřejné vyhledávání.
+
+Testovací vydání pro Apple Silicon a macOS 14 nebo novější.
+Aplikace zatím nemá podpis Developer ID ani notarizaci od Applu.
