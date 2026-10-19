@@ -6,26 +6,24 @@
     <description>Aktualizace aplikace Webshare Manager</description>
     <language>cs</language>
     <item>
-      <title>Webshare Manager 0.8.1</title>
-      <pubDate>Mon, 19 Oct 2026 19:04:31 GMT</pubDate>
-      <sparkle:version>15</sparkle:version>
-      <sparkle:shortVersionString>0.8.1</sparkle:shortVersionString>
+      <title>Webshare Manager 0.9.0</title>
+      <pubDate>Mon, 19 Oct 2026 19:10:39 GMT</pubDate>
+      <sparkle:version>16</sparkle:version>
+      <sparkle:shortVersionString>0.9.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
       <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-      <description>Webshare Manager 0.8.1
+      <description>Webshare Manager 0.9.0
 
-• Přizpůsobení rozložení menším oknům.
-• Nový moderní vzhled s modrými a tyrkysovými akcenty.
-• Přehlednější boční panel a karty přenosů.
-• Výraznější nahrávání a plocha pro přetažení souborů.
-• Sjednocený vzhled knihovny, hledání a přihlášení.
-• Světlý i tmavý vzhled podle nastavení macOS.
+• Nahrávání přímo do otevřené složky přes „Moje soubory → Nahrát sem“.
+• Cílová složka je vidět u každého nahrávání ve frontě.
+• Každý přenos si pamatuje svůj cíl i po restartování aplikace.
+• Dříve přidaná nahrávání zůstávají cílená do hlavní složky.
 • Zachována čeština i slovenština.
 
 Testovací vydání pro Apple Silicon, macOS 14+.
 Aplikace zatím nemá podpis Developer ID ani notarizaci od Applu.
 </description>
-      <enclosure url="https://github.com/humaxdragon-bit/webshare-manager/releases/download/v0.8.1/Webshare-Manager-0.8.1-arm64.zip" length="2312952" type="application/octet-stream" sparkle:edSignature="2JBOEtMbNZNvgytF7GEcSDIvNoZJ5gwgDjzLLHvGKgmSHOJrN/XO7ilkbPSeIQl0ANP+YeJZFJZltwEem9s0Bg==" />
+      <enclosure url="https://github.com/humaxdragon-bit/webshare-manager/releases/download/v0.9.0/Webshare-Manager-0.9.0-arm64.zip" length="2317476" type="application/octet-stream" sparkle:edSignature="D3iHXF5J4AejALSC7JGTRJU6Dt6HMSyE8QCF+2YzBJcLv7WV8J1qANkj2LfGJppFr0tOabBSjXenM3DTomdQAA==" />
     </item>
   </channel>
 </rss>
