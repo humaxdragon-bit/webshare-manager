@@ -32,17 +32,19 @@ struct TransferDashboardView: View {
                 Button { if store.running { store.stop() } else { store.start() } } label: { Label(L(store.running ? "Zastavit" : "Spustit frontu"), systemImage: store.running ? "stop.fill" : "play.fill") }.disabled(!store.signedIn)
             }.padding(.horizontal, 28).padding(.bottom, 14)
             if visible.isEmpty {
+                GeometryReader { geometry in
                 VStack(spacing: 10) {
-                    Spacer(minLength: 4)
-                    WMTransferIllustration()
+                    Spacer(minLength: 0)
+                    WMTransferIllustration().scaleEffect(geometry.size.height < 330 ? 0.75 : 1).frame(height: geometry.size.height < 330 ? 130 : 175)
                     Text("Připraveno na vaše soubory").font(.system(size: 23, weight: .bold, design: .rounded)).tracking(-0.4)
-                    Text("Přidejte odkazy ke stažení nebo sem přetáhněte\nsoubory, které chcete nahrát na Webshare.").font(.system(size: 12)).foregroundStyle(.secondary).multilineTextAlignment(.center).lineSpacing(4).fixedSize(horizontal: false, vertical: true)
+                    Text("Přidejte odkazy ke stažení nebo sem přetáhněte\nsoubory, které chcete nahrát na Webshare.").font(.system(size: 12)).foregroundStyle(.secondary).multilineTextAlignment(.center).lineSpacing(4).lineLimit(2).frame(height: 36)
                     HStack(spacing: 10) {
                         Button { store.chooseFiles() } label: { Label("Nahrát soubory", systemImage: "arrow.up.to.line") }.buttonStyle(WMButtonStyle(primary: true))
                         Button(action: addLinks) { Label("Přidat odkazy", systemImage: "link") }
                     }.padding(.top, 12)
-                    Spacer(minLength: 18)
-                }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                    Spacer(minLength: 0)
+                }.frame(width: geometry.size.width, height: geometry.size.height)
+                }
                     .background(WMTheme.surface.opacity(0.35), in: RoundedRectangle(cornerRadius: 22))
                     .overlay { RoundedRectangle(cornerRadius: 22).strokeBorder(targeted ? WMTheme.accent : WMTheme.line, style: StrokeStyle(lineWidth: targeted ? 2 : 1, dash: [6, 5])) }
                     .padding(.horizontal, 28).padding(.bottom, 20)

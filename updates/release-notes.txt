@@ -1,5 +1,6 @@
-Webshare Manager 0.8.0
+Webshare Manager 0.8.1
 
+• Přizpůsobení rozložení menším oknům.
 • Nový moderní vzhled s modrými a tyrkysovými akcenty.
 • Přehlednější boční panel a karty přenosů.
 • Výraznější nahrávání a plocha pro přetažení souborů.
