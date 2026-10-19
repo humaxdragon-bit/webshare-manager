@@ -6,23 +6,28 @@
     <description>Aktualizace aplikace Webshare Manager</description>
     <language>cs</language>
     <item>
-      <title>Webshare Manager 0.6.0</title>
-      <pubDate>Mon, 19 Oct 2026 18:44:51 GMT</pubDate>
-      <sparkle:version>12</sparkle:version>
-      <sparkle:shortVersionString>0.6.0</sparkle:shortVersionString>
+      <title>Webshare Manager 0.7.0</title>
+      <pubDate>Mon, 19 Oct 2026 18:52:28 GMT</pubDate>
+      <sparkle:version>13</sparkle:version>
+      <sparkle:shortVersionString>0.7.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
       <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-      <description>Webshare Manager 0.6.0
+      <description>Webshare Manager 0.7.0
 
-• Nabídka Zkontrolovat aktualizace… v horní liště.
-• Stažení a instalace ověřených aktualizací přímo z GitHubu.
-• Aktualizace počká na dokončení právě probíhajících přenosů.
-• České rozhraní, správa složek a veřejné vyhledávání.
+Čeština:
+• Přidána slovenská lokalizace celého rozhraní, dialogů a horních nabídek.
+• Jazyk se vybírá podle nastavení macOS; čeština zůstává výchozí.
+• Přeložené stavy přenosů, chybová hlášení a texty s počty položek.
 
-Testovací vydání pro Apple Silicon a macOS 14 nebo novější.
+Slovenčina:
+• Pridaná slovenská lokalizácia celého rozhrania, dialógov a horných ponúk.
+• Jazyk sa vyberá podľa nastavenia macOS; predvoleným jazykom zostáva čeština.
+• Preložené stavy prenosov, chybové hlásenia a texty s počtami položiek.
+
+Testovací vydání / Testovacie vydanie: Apple Silicon, macOS 14+.
 Aplikace zatím nemá podpis Developer ID ani notarizaci od Applu.
 </description>
-      <enclosure url="https://github.com/humaxdragon-bit/webshare-manager/releases/download/v0.6.0/Webshare-Manager-0.6.0-arm64.zip" length="2227830" type="application/octet-stream" sparkle:edSignature="e7qWATO5S4Sk3gLPat1+3y0zDRqBUgYa1VJq1eRNP67rMOdwd4+tFPBpjuwljeMg5wVSvJtjWp/foqhq4gnyAg==" />
+      <enclosure url="https://github.com/humaxdragon-bit/webshare-manager/releases/download/v0.7.0/Webshare-Manager-0.7.0-arm64.zip" length="2239991" type="application/octet-stream" sparkle:edSignature="MOmRRzho4BZfImDjvJu6nt7auc8Z/YlTHBDgyVre5eXEIxg0YlQZqoSGAava+JFO9dLUcTZiG/l67jWFTX3IDg==" />
     </item>
   </channel>
 </rss>
