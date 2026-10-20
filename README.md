@@ -8,6 +8,14 @@ Aplikaci stáhnete v [GitHub Releases](https://github.com/humaxdragon-bit/websha
 
 **Současné vydání je testovací. Aplikace zatím nemá podpis Developer ID ani notarizaci od Applu.** Na jiném Macu proto může macOS zobrazit upozornění při otevření. Intel Macy zatím nejsou podporované.
 
+## Ukázky rozhraní
+
+Přehled přenosů a veřejné vyhledávání v tmavém vzhledu. Screenshoty jsou oříznuté na hlavní část okna, aby neobsahovaly údaje účtu.
+
+![Přehled přenosů ve Webshare Manageru](docs/screenshots/transfers.png)
+
+![Veřejné vyhledávání na Webshare](docs/screenshots/search.png)
+
 ## Co aplikace umí
 
 - Hromadné stahování z odkazů a hromadné nahrávání souborů.
@@ -55,6 +63,14 @@ Kontroly zahrnují hashování hesel, parsování seznamů a složek, překrýva
 3. Na Macu s původním podpisovým klíčem v Klíčence spusťte `./scripts/publish-release.sh`.
 
 Skript provede kontroly, sestaví aplikaci, podepíše archiv, zveřejní testovací vydání a aktualizuje informační soubor pro aplikaci. Privátní klíč zůstává v Klíčence, do repozitáře patří pouze veřejný klíč z `updates/config.json`. Záloha podpisového klíče se má uchovávat bezpečně mimo repozitář.
+
+## Chyby a návrhy
+
+Našli jste chybu nebo máte nápad na vylepšení? Otevřete [GitHub Issue](https://github.com/humaxdragon-bit/webshare-manager/issues/new/choose). K dispozici jsou české formuláře pro hlášení chyb a návrhy funkcí. Před odesláním zkontrolujte, zda už stejné téma neexistuje. U chyb uveďte verzi aplikace, macOS a postup pro zopakování; nesdílejte přihlašovací údaje ani soukromé odkazy.
+
+## Licence
+
+Projekt je dostupný pod [licencí MIT](LICENSE). Aplikaci můžete používat, upravovat a šířit při zachování licenčního a autorského oznámení. Licence součástí třetích stran jsou uvedené samostatně níže.
 
 ## Použité součásti
 

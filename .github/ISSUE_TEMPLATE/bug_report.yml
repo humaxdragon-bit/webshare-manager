@@ -1,0 +1,43 @@
+name: Hlášení chyby
+description: Něco nefunguje podle očekávání.
+title: "[Chyba]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Děkujeme za hlášení. Nejprve prosím zkontrolujte existující Issues.
+        Nevkládejte hesla, přihlašovací údaje ani soukromé odkazy. Osobní údaje ve screenshotech zakryjte.
+  - type: input
+    id: version
+    attributes:
+      label: Verze aplikace
+      placeholder: Například 0.9.0
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: Verze macOS a model Macu
+      placeholder: Například macOS 15, MacBook Air M2
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Jak chybu zopakovat
+      description: Popište jednotlivé kroky.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Očekávané chování
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Co se skutečně stalo
+      description: Připojte přesné znění chyby, případně screenshot bez osobních údajů.
+    validations:
+      required: true

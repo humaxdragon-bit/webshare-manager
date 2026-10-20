@@ -1,0 +1,25 @@
+name: Návrh funkce
+description: Nápad na vylepšení aplikace.
+title: "[Návrh]: "
+body:
+  - type: markdown
+    attributes:
+      value: Než přidáte návrh, zkontrolujte prosím existující Issues.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Co vám v aplikaci chybí
+      description: Jakou situaci nebo problém chcete vyřešit?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Navrhované řešení
+      description: Jak by podle vás měla funkce fungovat?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Další možnosti nebo souvislosti
