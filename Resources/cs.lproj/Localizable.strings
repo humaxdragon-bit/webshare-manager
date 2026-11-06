@@ -14,6 +14,7 @@
 "Hledat na Webshare" = "Hledat na Webshare";
 "Hledat v načtených souborech a složkách" = "Hledat v načtených souborech a složkách";
 "Hledám „%@“…" = "Hledám „%@“…";
+"macOS může nabídnout účet uložený v aplikaci Hesla." = "macOS může nabídnout účet uložený v aplikaci Hesla.";
 "Kategorie" = "Kategorie";
 "Každý odkaz na samostatný řádek. Lze vložit i identifikátory souborů." = "Každý odkaz na samostatný řádek. Lze vložit i identifikátory souborů.";
 "Klíčenka odmítla uložení tokenu." = "Klíčenka odmítla uložení tokenu.";
@@ -93,6 +94,7 @@
 "Ukončit Webshare Manager?" = "Ukončit Webshare Manager?";
 "Ukázat ve Finderu" = "Ukázat ve Finderu";
 "Uložené přihlášení se nepodařilo ověřit: %@" = "Uložené přihlášení se nepodařilo ověřit: %@";
+"Uložené přihlášení vypršelo. Přihlaste se znovu." = "Uložené přihlášení vypršelo. Přihlaste se znovu.";
 "Vaše heslo se na disk neukládá." = "Vaše heslo se na disk neukládá.";
 "Vaše soubory. Jedna přehledná fronta." = "Vaše soubory. Jedna přehledná fronta.";
 "Velikost" = "Velikost";

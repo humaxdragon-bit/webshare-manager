@@ -42,7 +42,15 @@ import AppKit
             let user = try await API(token: saved).call("user_data")
             token = saved; signedIn = true; account = user["username"] ?? L("Přihlášeno")
             Task { [weak self] in await self?.loadUploads() }
-        } catch { self.error = LF("Uložené přihlášení se nepodařilo ověřit: %@", error.localizedDescription) }
+        } catch {
+            let reason = error.localizedDescription
+            if reason.localizedCaseInsensitiveContains("GET_USER_DATA") || reason.localizedCaseInsensitiveContains("Access denied") {
+                TokenStore.delete()
+                self.error = L("Uložené přihlášení vypršelo. Přihlaste se znovu.")
+            } else {
+                self.error = LF("Uložené přihlášení se nepodařilo ověřit: %@", reason)
+            }
+        }
     }
     func login(_ username: String, password: String, remember: Bool) async {
         busy = true; defer { busy = false }

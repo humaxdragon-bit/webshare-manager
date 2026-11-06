@@ -27,7 +27,11 @@ Přehled přenosů a veřejné vyhledávání v tmavém vzhledu. Screenshoty jso
 - České a slovenské rozhraní včetně horních nabídek. Jazyk se zvolí podle nastavení macOS; výchozí jazyk je čeština.
 - Nabídka **Webshare Manager → Zkontrolovat aktualizace…** pro stažení a instalaci nových verzí.
 
-Přihlášení probíhá přímo účtem Webshare.cz. Heslo se neukládá; přihlášení lze zapamatovat v Klíčence macOS. Nastavení a fronta zůstávají v uživatelské složce aplikace. Žádné uživatelské údaje ani soubory nejsou součástí tohoto repozitáře.
+Přihlášení probíhá přímo účtem Webshare.cz. Přihlašovací pole podporují systémové doplnění z aplikace Hesla v macOS. Heslo se do aplikace ani na disk neukládá; přihlášení lze zapamatovat v Klíčence macOS. Nastavení a fronta zůstávají v uživatelské složce aplikace. Žádné uživatelské údaje ani soubory nejsou součástí tohoto repozitáře.
+
+## Přihlášení uloženým heslem
+
+Při přihlášení klikněte do pole uživatelského jména nebo hesla. macOS může nabídnout odpovídající přihlašovací údaje uložené v aplikaci Hesla. Neplatné uložené přihlášení aplikace odstraní z Klíčenky a vyzve k novému přihlášení.
 
 ## Nahrávání do složky
 

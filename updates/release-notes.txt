@@ -1,9 +1,8 @@
-Webshare Manager 0.9.0
+Webshare Manager 0.9.2
 
-• Nahrávání přímo do otevřené složky přes „Moje soubory → Nahrát sem“.
-• Cílová složka je vidět u každého nahrávání ve frontě.
-• Každý přenos si pamatuje svůj cíl i po restartování aplikace.
-• Dříve přidaná nahrávání zůstávají cílená do hlavní složky.
+• Přihlašovací pole podporují automatické doplnění účtu uloženého v aplikaci Hesla v macOS.
+• Neplatné uložené přihlášení se odstraní z Klíčenky, aby bylo možné se přihlásit znovu.
+• Heslo se v aplikaci ani na disk neukládá.
 • Zachována čeština i slovenština.
 
 Testovací vydání pro Apple Silicon, macOS 14+.
