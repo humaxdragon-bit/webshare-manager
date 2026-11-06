@@ -6,24 +6,23 @@
     <description>Aktualizace aplikace Webshare Manager</description>
     <language>cs</language>
     <item>
-      <title>Webshare Manager 0.9.0</title>
-      <pubDate>Mon, 19 Oct 2026 19:10:39 GMT</pubDate>
-      <sparkle:version>16</sparkle:version>
-      <sparkle:shortVersionString>0.9.0</sparkle:shortVersionString>
+      <title>Webshare Manager 0.9.2</title>
+      <pubDate>Fri, 06 Nov 2026 20:40:28 GMT</pubDate>
+      <sparkle:version>18</sparkle:version>
+      <sparkle:shortVersionString>0.9.2</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
       <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-      <description>Webshare Manager 0.9.0
+      <description>Webshare Manager 0.9.2
 
-• Nahrávání přímo do otevřené složky přes „Moje soubory → Nahrát sem“.
-• Cílová složka je vidět u každého nahrávání ve frontě.
-• Každý přenos si pamatuje svůj cíl i po restartování aplikace.
-• Dříve přidaná nahrávání zůstávají cílená do hlavní složky.
+• Přihlašovací pole podporují automatické doplnění účtu uloženého v aplikaci Hesla v macOS.
+• Neplatné uložené přihlášení se odstraní z Klíčenky, aby bylo možné se přihlásit znovu.
+• Heslo se v aplikaci ani na disk neukládá.
 • Zachována čeština i slovenština.
 
 Testovací vydání pro Apple Silicon, macOS 14+.
 Aplikace zatím nemá podpis Developer ID ani notarizaci od Applu.
 </description>
-      <enclosure url="https://github.com/humaxdragon-bit/webshare-manager/releases/download/v0.9.0/Webshare-Manager-0.9.0-arm64.zip" length="2317476" type="application/octet-stream" sparkle:edSignature="D3iHXF5J4AejALSC7JGTRJU6Dt6HMSyE8QCF+2YzBJcLv7WV8J1qANkj2LfGJppFr0tOabBSjXenM3DTomdQAA==" />
+      <enclosure url="https://github.com/humaxdragon-bit/webshare-manager/releases/download/v0.9.2/Webshare-Manager-0.9.2-arm64.zip" length="2319810" type="application/octet-stream" sparkle:edSignature="CVcae9SncWVWuVpK9ZViFN8tqkSiftm94q3vPw1oaCeVmEpAb4l5iNGDpwuEtoUri+F7rCsBGz/WXuGJDiuwBA==" />
     </item>
   </channel>
 </rss>
